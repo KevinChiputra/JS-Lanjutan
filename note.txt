@@ -45,3 +45,23 @@ Part 3 Prototype
 2. Caranya membuat Constructor Function. Dibelakang layar Constructor Function membuat variable this dan mengreturn this seperti funciton declaration, tetapi bedanya pembuatannya otomatis. Kemudian jika menggunakan funciton declaration object.create dibuat manual, pada Constructor Function object.create jg otomatis dibuat dengan parentnya object.create({namaConsttructorFunction}.Prototype). Sehingga sebenarnya prototype sudah ada sejak awal dibuat.
 3. sebuah yang didclare di JS adalah objek sehingga semuanya memiliki prototype.
 4. Untuk pembuatannya bisa juga dengan class, tapi bedanya pada class memnggunakan constructor. Dibelakang layar class melakukan hal yang sama dengan constructor funciton.
+
+// ===================================================================
+
+Part 4 Closure
+1. Terdapat 2 fase Creation dan Execution.
+    1.1 Creation phase pada global context. Jadi jika console.log di line 1 dan var nama di line 2. maka tidak error tpi undefined karena di lakukan konsep hoisting (kayak menaikkan bendera), var nama di naikkan dengan isinya "undefined". jika maka menjadi function = fn().
+    1.2 Execution phase baru eksekusi code dari atas ke bawah.
+2. window -> global object, this -> window
+3. Jika hoisting pada function, dilakukan local execution context yang didalamnya terdapat creation dan execution phase juga. Local execution context tidak hanya mengakses windows tetapi juga argument dan hoisting.
+4. Misal pada sebuah function tidak memiliki parameter function cetakURL(), tapi kita mengoper argumen console.log(cetakURL("@kevin", "@chi")). Maka argumen tersebut akan dioper ke yg disebut arguments, yang berbentuk array. console.log(arguments[0]) maka output @kevin
+
+Part 5 lanjutan closure
+1. Closure -> function yang berada didalam function dan bisa mengakses lexical scope (parentnya)
+2. Tujuannya:
+    1.1 Membuat function factories
+    1.2 membuat private method
+
+// =================================================================
+
+Part 6
