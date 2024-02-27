@@ -35,3 +35,13 @@ Part 1
 2. terdapat var "this"
 
 Part 2 Object Create
+1. Cons dari Object literal -> tidak efektif karena buat objek satu"
+2. cons Function Declaration -> jika membuat objek baru makan function diduplicate, solusinya menyimpan function di global object. Tapi masalahnya jika menambahkan function baru di global object maka perlu mengupdate Declaration function. 
+3. Solusi dari masalha no 2 adalah penggunaan object.create() dimana konsepnya mirip dengan inheritance, menghubungkan satu objek dengan objek yang lain. Tapi ttp aja kita membuat 2 objek.
+4. Sehingga cara ini tidak terlalu efektif karena yg dibutuhkan adalah function Declaration bukan object yg menyimpan function untuk mendukung function Declaration.
+
+Part 3 Prototype
+1. Salah satu cara agar tidak mengelolah 2 funciton adalah dengan menggunakan "prototype"
+2. Caranya membuat Constructor Function. Dibelakang layar Constructor Function membuat variable this dan mengreturn this seperti funciton declaration, tetapi bedanya pembuatannya otomatis. Kemudian jika menggunakan funciton declaration object.create dibuat manual, pada Constructor Function object.create jg otomatis dibuat dengan parentnya object.create({namaConsttructorFunction}.Prototype). Sehingga sebenarnya prototype sudah ada sejak awal dibuat.
+3. sebuah yang didclare di JS adalah objek sehingga semuanya memiliki prototype.
+4. Untuk pembuatannya bisa juga dengan class, tapi bedanya pada class memnggunakan constructor. Dibelakang layar class melakukan hal yang sama dengan constructor funciton.
