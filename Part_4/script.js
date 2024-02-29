@@ -27,15 +27,17 @@
 
 // ========================
 
-let add = (function () {
-    let counter = 0
-    return function (){
-        return ++counter
-    }
-})()
+// let add = (function () {
+//     let counter = 0
+//     return function (){
+//         return ++counter
+//     }
+// })()
 
 
-// let a = add()
-console.dir(add())
-console.dir(add())
-console.dir(add())
+// // let a = add()
+// console.dir(add())
+// console.dir(add())
+// console.dir(add())
+
+

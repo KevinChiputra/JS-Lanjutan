@@ -65,3 +65,134 @@ Part 5 lanjutan closure
 // =================================================================
 
 Part 6
+1. penggunaan var memungkinkan terjadinya hoisting yang bisa membuat pusing source code, solusinya pakai let dan const agar mirip dengan bahasa lain
+2. JS menggunakan function scope.
+3. Self invoking function. Cara penulisannya (function() {} ()). ini dapat mencegah var mengakses variable yang terdapat dalam function. Sebab misal pada sebuah for loop i kita declare menggunakan var. variable i jika di luar loop masih dpt diakses, padahal pada bahasa lain tdk bisa (bahasa lain menggunakan block scope)
+4. Tapi self invoking function itu cara lama, solusi terbaru pakai let (let dan const menganut block scope)
+
+// ==================================================================
+
+Part 7 Arrow Function
+1. contoh penulisan const tampilNama = (nama, waktu) => `${nama}`
+2. jika tampa parameter const tampilNama = () => `Hello`
+
+Part 8 lanjutan Arrow Function
+1. arrow function, tidak mengenal "this". Menggunakan literal object maka this tidak berlaku karena tidak mencari di lexical scope, berbeda dengan menggunakan function() 
+
+// =======================================================================
+
+Part 9 Higher Order Function
+1. Function yang beroperasi pada function lain. 
+Contoh:
+function kerjaTugas(matakuliah, selesai){
+    console.log(`kerja ${matakuliah}`)
+    selesai()
+}
+Dari contoh di atas, function kerjaTugas disebut higher order funciton dan argumen selesai disebut callback.
+2. Kenapa pakai?
+    2.1 abstraksi (mengurangi kopleksitas)
+    2.2 Functional Programming
+
+
+Part 10 Filter, map, dan reduce (prototype dari array)
+1. arr.filter({function() atau arrow function})
+2. arr.map({function() atau arrow function})
+3. arr.reduce((accumulaor, currentValue) => operasi(contoh accumulaor + currentValue), {accumulaor awal by default 0})
+    3.1 accumulaor nilai total, index ke i dalam arr
+4. pengabungan method disebut method chaining, contoh: 
+const newAngka4 = angka.filter(a => a > 5).map(a => a * 3).reduce((a, b) => a + b, 0)
+
+Part 11 latihan filter, map, reduce di folder part 11
+
+// ==============================================================================
+
+part 12 template literals / template strings
+1. string literal yg memungkinkan expresion didalamnya.
+    1.1 string literal string biasa pakai kutip satu atau dua atau back tick (template literal)
+
+part 13. template literals latihan
+1. latihan di folder part 13
+
+Part 14 Tagged template literals
+1. Memungkinkan kita membaca template literals melalui sebuah function
+2. Tujuannya  
+    2.1 escaping HTML tags
+    2.2 Translation dan internationalization
+    2.3 styled components
+
+// =======================================================================================
+
+Part 15 Destruction Assignment
+1. mengdistrucksi object atau array.
+2. pada object by default hrs pakai nama sesuai dgn method, tapi jika ingin mengati bisa denga {{nama lama}:{nama baru}}
+
+part 16 Destruction Function
+1. code di part 15
+2. penjelasan di code
+
+
+// =============================================================================================
+
+Part 17 for..of VS for..in (contoh langsung ada di code)
+1. for..of => bisa di string, dimn forEach tidak bisa
+2. for..in
+
+// ====================================================================
+
+part 18 spread Operator
+1. Catatan di script.JS
+2. memecah itnerables menjadi single element
+
+part 19 rest parameter
+1. Mempresentasik function dengan jumlah tidak terbatas menjadi sebuah array. Mengambil sisa dijadikan array / object
+
+
+// =======================================================================
+
+part 20 Asynchronous Javascript
+1. Ada Callback, Promise, ajax, dan Asyncs & Await
+2. JS itu:
+    2.1 single tread
+    2.2 blocking
+    2.3 Asynchronous
+3. JANGAN BLOCK EVENT LOOP. Caranya gimn?
+4. gunakan Asynchronous callback (ada banyak seperti ajax, DOM, setTimeout, setInterval, dll) seperti setTimeout. Dimana dalam JS terdapat Heap (hoisting terjadi) dan stack (eksekusi perintah). Tapi jika kita menggunakan Asynchronous callbacks akan dipindahkan ke Web API dan kemudian masuk ke callback queue. di callback queue terdapat event loop yg fungsinya cek event, jika ada pastikan di stack sudah menjalankan semua perintah baru masukan event dari callback queue
+
+part 21 Callback
+1. function yg dikirimkan ke parameter pada function lain
+
+part 22 Promise
+1. kalau mau pakai jQuery online cari jQuery CDN
+2. Promise adalah object yang merepresentasikan keberhasilan / kegagalan sebuah event yang asynchronous di masa yang akan datang
+3. Janji (terpenuhi / ingkar)
+    3.1 terpenuhi => states(fulfilled)
+    3.2 ingkar => states(rejected)
+    3.3 tunggu => states(pending)
+    3.4 ada callback (resolve(terpenuhi) / reject(tidak terpenuhi) / finally(waktu tunggu selesai))
+    3.5 aksi (then (terpenuhi)/ catch (tidak terpenuhi))
+4. promise.all() => untuk jalankan semua promise jika banyak
+
+part 23 Callback latihan menggunakan AJAX dri jQuery
+1. makin banyak call back disebut callback hell.
+
+part 24 Fetch
+1. Sebuah method pada API js utk mengambil resources dari jaringan, dan mengembalikan promise yang selesai (fullfilled) ketika ada response yang tersedia
+2. fetch(resources, init)
+    2.1 resources bisa URL atau request object
+    2.2 init (optional) konfigurasi tambahan pada request berbentuk object
+3. hasil dari fetch adalah promise => property (headers, ok, redirected, status, statusText, type, url, body) dan method (clone(), error(), json(), blob(), formData(), text(), redirect())
+
+
+part 25 refactoring fetch pada part 24
+
+
+part 26 Async and Await
+1. async -> sebuah function yg bekerja secara asyncronous (melalui event loop) yang menghasilkan implisit promise dan cara penulisannya seperti function biasa
+2. await -> membuat function menunggu sampai resolve
+
+part 27 error handling
+1. async dan await (pakai try dan catch)
+2. kalau promise pakai then dan catch
+3. gimn kalau errornya fetch() (?)
+    contoh di code part 24
+    3.1 bisa pakai try and catch dengan ditambahkan "throw new error()"
